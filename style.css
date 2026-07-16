@@ -1,0 +1,329 @@
+/* Adicionando fonte Nova */
+@font-face {
+  font-family: Crewniverse;
+  src: url(crewniverse_font.otf);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Resetando o style da Página */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* corpo da pagina */
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: #f8fafc;
+  color: #333;
+
+  margin-top: 200px;
+  transition: 0.35s;
+}
+
+main {
+  padding: 20px;
+}
+
+/* Cabeçalho Fixo */
+.header {
+  font-family: Crewniverse, sans-serif;
+  letter-spacing: 0px;
+  color: black;
+
+  background-color: #eef2ff;
+  padding: 20px 5%;
+  text-align: center;
+  text-decoration: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.45s ease;
+  z-index: 1000;
+}
+.perfil {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+header img {
+  max-width: 160px;
+  width: 90%;
+  transition: 0.21s;
+  margin: auto;
+
+  border-radius: 10px;
+}
+header h1 {
+  transition: 0.45s;
+}
+.nav-menu {
+  font-size: clamp(16px, 2vw, 28px);
+  transition: transform 0.45s ease;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2vw, 30px);
+}
+
+/* Quando scrollar transformar e transicionar*/
+header.scrolled {
+  min-height: 80px;
+  height: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  padding: 10px 5%;
+}
+header.scrolled .nav-menu {
+  transform: scale(0.9);
+}
+header.scrolled img {
+  max-width: 70px;
+  width: 90%;
+  margin: auto;
+}
+header.scrolled h1 {
+  font-size: clamp(20px, 2vw, 28px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: auto;
+}
+
+header.scrolled nav a {
+  font-size: clamp(16px, 2vw, 20px);
+}
+/* Nav */
+.nav-menu a {
+  text-decoration: none;
+  color: #5d12ce;
+
+  gap: 15px;
+  margin-left: 10px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.35s ease,
+    font-size 0.35s ease;
+}
+/* Quando estiver em cima trocar a cor */
+.nav-menu a:hover {
+  color: #2a0b58;
+}
+
+/*  */
+.about,
+.habilities,
+.projects,
+.contact {
+  margin: 20px;
+}
+
+/* Sobre mim */
+.about p {
+  margin: 10px;
+}
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+/* Habilidades */
+.habilities ul {
+  margin: 30px;
+}
+
+.contact-content,
+.habilities-content,
+.about-content {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Projetos */
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.project-highlight {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.project-highlight img {
+  width: 500px;
+  max-width: 100%;
+  border-radius: 10px;
+}
+.project-highlight blockquote {
+  flex: 1;
+  font-style: italic;
+  font-size: 1.1rem;
+  border-left: 5px solid #5d12ce;
+  border-radius: 4px;
+  padding-left: 20px;
+}
+.projects ul {
+  margin-left: 30px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* Definição de altura de cada imagem */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Definição de cada titulo e Paragrafo */
+h2 {
+  margin-bottom: 25px;
+  font-size: clamp(26px, 2vw, 36px);
+}
+h3 {
+  font-size: clamp(18px, 2vw, 28px);
+}
+p,
+ul {
+  font-size: clamp(12px, 2vw, 22px);
+  line-height: 1.7;
+}
+/* Depois de um Titulo2 É obrigatório tal tal tal */
+h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: #5d12ce;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+
+.contact a {
+  text-decoration: none;
+  color: #5d12ce;
+}
+.contact a:hover {
+  color: #2a0b58;
+}
+
+/*Rodapé*/
+.footer {
+  font-family: Crewniverse, sans-serif;
+  letter-spacing: 0px;
+  color: black;
+
+  justify-content: center;
+  display: flex;
+
+  background-color: #eef2ff;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.page-icon {
+  border-radius: 40px;
+}
+
+/* Corrigir o posicionamento quando utilizar um Nav-Menu */
+#sobre,
+#habilidades,
+#projetos,
+#c\&h,
+#contato {
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 900px) {
+  .project-highlight {
+    flex-direction: column;
+  }
+
+  body {
+    margin-top: 160px;
+  }
+
+  .project-highlight img {
+    width: 100%;
+  }
+
+  .project-highlight blockquote {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .perfil img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  .perfil h1 {
+    font-size: 1.5rem;
+    line-height: 0.9;
+  }
+  .nav-menu a {
+    font-size: 0.8rem;
+    line-height: 0.9;
+  }
+  .header {
+    transition: none;
+  }
+
+  body {
+    margin-top: 130px;
+  }
+
+  header.scrolled img {
+    max-width: 80px;
+  }
+
+  header.scrolled {
+    transform: none;
+  }
+
+  #sobre,
+  #habilidades,
+  #projetos,
+  #c\&h,
+  #contato {
+    scroll-margin-top: 170px;
+  }
+}
