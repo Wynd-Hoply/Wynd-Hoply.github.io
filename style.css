@@ -203,11 +203,11 @@ h2 {
   font-size: clamp(26px, 2vw, 36px);
 }
 h3 {
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(24px, 2vw, 28px);
 }
 p,
 ul {
-  font-size: clamp(12px, 2vw, 22px);
+  font-size: clamp(20px, 2vw, 22px);
   line-height: 1.7;
 }
 /* Depois de um Titulo2 É obrigatório tal tal tal */
@@ -272,6 +272,8 @@ h2::after {
 
   .project-highlight blockquote {
     width: 100%;
+    font-size: 0.6rem;
+    line-height: 0.9;
   }
 }
 
@@ -289,6 +291,9 @@ h2::after {
 }
 
 @media (max-width: 767px) {
+  main {
+    padding: 0px;
+  }
   .perfil img {
     width: 80px;
     height: 80px;
@@ -300,15 +305,16 @@ h2::after {
     line-height: 0.9;
   }
   .nav-menu a {
-    font-size: 0.8rem;
-    line-height: 0.9;
+    font-size: 0.6rem;
+    line-height: 0.3;
   }
+
   .header {
     transition: none;
   }
 
   body {
-    margin-top: 130px;
+    margin-top: 163px;
   }
 
   header.scrolled img {
@@ -319,11 +325,36 @@ h2::after {
     transform: none;
   }
 
+  .project-highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
   #sobre,
   #habilidades,
   #projetos,
   #c\&h,
   #contato {
-    scroll-margin-top: 170px;
+    scroll-margin-top: 155px;
+  }
+
+  .about,
+  .habilities,
+  .projects,
+  .contact {
+    margin: 16px;
+  }
+  section {
+  }
+
+  .about p,
+  .habilities p,
+  .project p {
+    margin-bottom: 15px;
+    line-height: 1.2;
+    font-size: 1.2rem;
   }
 }
+
+
