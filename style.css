@@ -1,3 +1,29 @@
+/* ==========================================================================
+   Variáveis Globais e Configurações de Fonte
+   ========================================================================== */
+:root {
+  /* Cores */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #eef2ff;
+  --bg-card: #ffffff;
+  --text-main: #333333;
+  --text-dark: #000000;
+  --color-primary: #5d12ce;
+  --color-primary-hover: #2a0b58;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-dark: rgba(0, 0, 0, 0.15);
+
+  /* Fontes */
+  --font-title: Crewniverse, sans-serif;
+  --font-body: Georgia, "Times New Roman", Times, serif;
+
+  /* Transições */
+  --transition-fast: 0.21s;
+  --transition-normal: 0.3s ease;
+  --transition-medium: 0.35s ease;
+  --transition-slow: 0.45s ease;
+}
+
 /* Adicionando fonte Nova */
 @font-face {
   font-family: Crewniverse;
@@ -14,43 +40,41 @@
   box-sizing: border-box;
 }
 
-/* corpo da pagina */
+/* Corpo da página */
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  background-color: #f8fafc;
-  color: #333;
-
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
   margin-top: 200px;
-  transition: 0.35s;
+  transition: var(--transition-medium);
 }
 
 main {
   padding: 20px;
 }
 
-/* Cabeçalho Fixo */
+/* ==========================================================================
+   Cabeçalho Fixo
+   ========================================================================== */
 .header {
-  font-family: Crewniverse, sans-serif;
+  font-family: var(--font-title);
   letter-spacing: 0px;
-  color: black;
-
-  background-color: #eef2ff;
+  color: var(--text-dark);
+  background-color: var(--bg-secondary);
   padding: 20px 5%;
   text-align: center;
   text-decoration: none;
-
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  transition: 0.45s ease;
+  transition: var(--transition-slow);
   z-index: 1000;
 }
+
 .perfil {
   display: flex;
   flex-direction: row;
@@ -58,45 +82,64 @@ main {
   align-items: center;
   gap: 20px;
 }
+
 header img {
   max-width: 160px;
   width: 90%;
-  transition: 0.21s;
+  transition: var(--transition-fast);
   margin: auto;
-
   border-radius: 10px;
 }
+
 header h1 {
-  transition: 0.45s;
+  transition: var(--transition-slow);
 }
+
 .nav-menu {
   font-size: clamp(16px, 2vw, 28px);
-  transition: transform 0.45s ease;
-
+  transition: transform var(--transition-slow);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: clamp(10px, 2vw, 30px);
 }
 
-/* Quando scrollar transformar e transicionar*/
+/* Navegação */
+.nav-menu a {
+  text-decoration: none;
+  color: var(--color-primary);
+  gap: 15px;
+  margin-left: 10px;
+  transition:
+    color var(--transition-normal),
+    transform var(--transition-medium),
+    font-size var(--transition-medium);
+}
+
+.nav-menu a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Efeitos ao Scrollar */
 header.scrolled {
   min-height: 80px;
   height: auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 15px var(--shadow-dark);
   padding: 10px 5%;
 }
+
 header.scrolled .nav-menu {
   transform: scale(0.9);
 }
+
 header.scrolled img {
   max-width: 70px;
   width: 90%;
   margin: auto;
 }
+
 header.scrolled h1 {
   font-size: clamp(20px, 2vw, 28px);
-
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -106,25 +149,10 @@ header.scrolled h1 {
 header.scrolled nav a {
   font-size: clamp(16px, 2vw, 20px);
 }
-/* Nav */
-.nav-menu a {
-  text-decoration: none;
-  color: #5d12ce;
 
-  gap: 15px;
-  margin-left: 10px;
-
-  transition:
-    color 0.3s ease,
-    transform 0.35s ease,
-    font-size 0.35s ease;
-}
-/* Quando estiver em cima trocar a cor */
-.nav-menu a:hover {
-  color: #2a0b58;
-}
-
-/*  */
+/* ==========================================================================
+   Seções de Conteúdo (Geral)
+   ========================================================================== */
 .about,
 .habilities,
 .projects,
@@ -132,10 +160,20 @@ header.scrolled nav a {
   margin: 20px;
 }
 
+
+.habilities-content,
+.about-content {
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px var(--shadow-light);
+}
+
 /* Sobre mim */
 .about p {
   margin: 10px;
 }
+
 .about-content {
   display: flex;
   flex-direction: column;
@@ -147,108 +185,166 @@ header.scrolled nav a {
   margin: 30px;
 }
 
-.contact-content,
-.habilities-content,
-.about-content {
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
 /* Projetos */
 .project {
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-  background: white;
+  background: var(--bg-card);
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px var(--shadow-light);
 }
+
 .project-highlight {
   display: flex;
   align-items: center;
   gap: 30px;
 }
+
 .project-highlight img {
   width: 500px;
   max-width: 100%;
   border-radius: 10px;
 }
+
 .project-highlight blockquote {
   flex: 1;
   font-style: italic;
   font-size: 1.1rem;
-  border-left: 5px solid #5d12ce;
+  border-left: 5px solid var(--color-primary);
   border-radius: 4px;
   padding-left: 20px;
 }
+
 .projects ul {
   margin-left: 30px;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
-/* Definição de altura de cada imagem */
+/* Contato */
+.contact a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.contact-content{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.contact-content a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    text-decoration:none;
+    color:#333;
+
+    padding:10px 16px;
+    border-radius:12px;
+
+    background:#fff;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    transition:.25s;
+}
+
+.contact-content a:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.contact-content img{
+    width:28px;
+    height:28px;
+}
+.contact a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ==========================================================================
+   Elementos Tipográficos Globais e Mídia
+   ========================================================================== */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Definição de cada titulo e Paragrafo */
 h2 {
   margin-bottom: 25px;
   font-size: clamp(26px, 2vw, 36px);
 }
-h3 {
-  font-size: clamp(24px, 2vw, 28px);
-}
-p,
-ul {
-  font-size: clamp(20px, 2vw, 22px);
-  line-height: 1.7;
-}
-/* Depois de um Titulo2 É obrigatório tal tal tal */
+
 h2::after {
   content: "";
   display: block;
   width: 100%;
   height: 4px;
-  background: #5d12ce;
+  background: var(--color-primary);
   border-radius: 10px;
   margin-top: 8px;
 }
 
-.contact a {
-  text-decoration: none;
-  color: #5d12ce;
-}
-.contact a:hover {
-  color: #2a0b58;
+h3 {
+  font-size: clamp(24px, 2vw, 28px);
 }
 
-/*Rodapé*/
-.footer {
-  font-family: Crewniverse, sans-serif;
-  letter-spacing: 0px;
-  color: black;
-
-  justify-content: center;
-  display: flex;
-
-  background-color: #eef2ff;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
+p,
+ul {
+  font-size: clamp(20px, 2vw, 22px);
+  line-height: 1.7;
 }
 
 .page-icon {
   border-radius: 40px;
 }
 
-/* Corrigir o posicionamento quando utilizar um Nav-Menu */
+/* Rodapé */
+.footer {
+  font-family: var(--font-title);
+  letter-spacing: 0px;
+  color: var(--text-dark);
+  justify-content: center;
+  display: flex;
+  background-color: var(--bg-secondary);
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+.footer{
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background-color: #eef2ff;
+
+    font-family: Crewniverse, sans-serif;
+}
+
+.footer img{
+    max-width: 60px;      /* diminua ou aumente aqui */
+    height: auto;
+}
+
+.footer-left{
+    position: absolute;
+    left: 20px;
+}
+
+.footer-right{
+    position: absolute;
+    right: 20px;
+}
+
+/* Âncoras do Nav-Menu */
 #sobre,
 #habilidades,
 #projetos,
@@ -257,13 +353,29 @@ h2::after {
   scroll-margin-top: 100px;
 }
 
-@media (max-width: 900px) {
-  .project-highlight {
-    flex-direction: column;
-  }
+/* ==========================================================================
+   Media Queries (Responsividade)
+   ========================================================================== */
 
+/* Unificado as regras de 900px em um único bloco */
+@media (max-width: 900px) {
   body {
     margin-top: 160px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .project-highlight {
+    flex-direction: column;
   }
 
   .project-highlight img {
@@ -277,33 +389,23 @@ h2::after {
   }
 }
 
-@media (max-width: 900px) {
-  .header {
-    flex-direction: column;
-    gap: 20px;
-    height: auto;
-  }
-
-  .nav-menu {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
 @media (max-width: 767px) {
   main {
     padding: 0px;
   }
+
   .perfil img {
     width: 80px;
     height: 80px;
     object-fit: cover;
     border-radius: 16px;
   }
+
   .perfil h1 {
     font-size: 1.5rem;
     line-height: 0.9;
   }
+
   .nav-menu a {
     font-size: 0.6rem;
     line-height: 0.3;
@@ -331,6 +433,7 @@ h2::after {
     align-items: center;
     gap: 20px;
   }
+
   #sobre,
   #habilidades,
   #projetos,
@@ -345,8 +448,6 @@ h2::after {
   .contact {
     margin: 16px;
   }
-  section {
-  }
 
   .about p,
   .habilities p,
@@ -355,6 +456,25 @@ h2::after {
     line-height: 1.2;
     font-size: 1.2rem;
   }
+   .footer{
+        padding: 15px;
+    }
+
+    .footer p{
+        font-size: 0.55rem;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    .footer img{
+        width: 35px;
+    }
+
+    .footer-left{
+        left: 8px;
+    }
+
+    .footer-right{
+        right: 8px;
+    }
 }
-
-
