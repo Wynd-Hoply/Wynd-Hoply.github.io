@@ -1,6 +1,7 @@
 const header = document.getElementById("header");
 const body = document.body;
 const themeToggle = document.querySelector(".theme-toggle");
+const copyEmailButton = document.querySelector(".copy-email");
 
 function atualizarHeaderPorScroll() {
   if (!header) return;
@@ -53,6 +54,37 @@ if (themeToggle) {
   themeToggle.addEventListener("click", () => {
     const isDarkMode = !body.classList.contains("dark-mode");
     aplicarTema(isDarkMode);
+  });
+}
+
+if (copyEmailButton) {
+  copyEmailButton.addEventListener("click", async () => {
+    const email = copyEmailButton.dataset.email;
+
+    if (!email) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      const iconHtml = copyEmailButton.querySelector("img")?.outerHTML || "";
+      const textoOriginal = copyEmailButton.innerHTML;
+
+      copyEmailButton.innerHTML = `${iconHtml}<span class="copy-success-text">Email copiado!</span>`;
+      copyEmailButton.classList.add("copy-success");
+
+      setTimeout(() => {
+        copyEmailButton.classList.remove("copy-success");
+        copyEmailButton.innerHTML = textoOriginal;
+      }, 1500);
+    } catch {
+      const iconHtml = copyEmailButton.querySelector("img")?.outerHTML || "";
+      const textoOriginal = copyEmailButton.innerHTML;
+
+      copyEmailButton.innerHTML = `${iconHtml}<span>Não foi possível copiar</span>`;
+
+      setTimeout(() => {
+        copyEmailButton.innerHTML = textoOriginal;
+      }, 1500);
+    }
   });
 }
 

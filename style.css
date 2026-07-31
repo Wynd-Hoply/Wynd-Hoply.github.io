@@ -270,6 +270,40 @@ header.scrolled nav a {
   text-decoration: none;
 }
 
+.copy-email {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  font: inherit;
+  transition: 0.25s;
+}
+
+.copy-email:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.copy-email img {
+  width: 28px;
+  height: 28px;
+}
+
+.copy-email.copy-success {
+  background: rgba(22, 163, 74, 0.12);
+  color: #15803d;
+}
+
+.copy-success-text {
+  color: #15803d;
+}
+
 .contact-content {
   display: flex;
   flex-wrap: wrap;
