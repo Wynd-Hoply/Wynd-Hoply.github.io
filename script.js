@@ -1,57 +1,74 @@
-// Cria uma constante que puxa a id "Header"
 const header = document.getElementById("header");
-// Quando descer um pouco o Header vai fazer algo
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 90) {
+const body = document.body;
+const themeToggle = document.querySelector(".theme-toggle");
+
+function atualizarHeaderPorScroll() {
+  if (!header) return;
+
+  if (window.innerWidth <= 900) {
+    header.classList.remove("scrolled");
+    return;
+  }
+
+  if (window.scrollY > 50) {
     header.classList.add("scrolled");
   } else {
     header.classList.remove("scrolled");
   }
-});
-// Cria uma constante que puxa a id "Body"
-const body = document.getElementById("body");
-// Quando descer um pouco o Body vai fazer algo
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 90) {
-    body.classList.add("scrolled");
-  } else {
-    body.classList.remove("scrolled");
-  }
-});
-
-
-window.addEventListener("scroll", () => {
-
-    if (window.innerWidth <= 900) {
-        header.classList.remove("scrolled");
-        return;
-    }
-
-    if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
-    }
-
-});
-
-
-document.querySelectorAll('.nav-menu a').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const destino = document.querySelector(this.getAttribute('href'));
-
-    destino.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-  });
-});
-/* Eu sei que eu poderia fazer direto no CSS. Mas eu prefiro desse jeito pela velocidade. 
-
-html {
-    scroll-behavior: smooth;
 }
 
-*/
+function lerTemaSalvo() {
+  try {
+    return localStorage.getItem("theme");
+  } catch {
+    return null;
+  }
+}
+
+function salvarTema(isDarkMode) {
+  try {
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  } catch {
+    // Ignora falha de armazenamento em navegadores restritivos.
+  }
+}
+
+function aplicarTema(isDarkMode) {
+  if (!body || !themeToggle) return;
+
+  body.classList.toggle("dark-mode", isDarkMode);
+  themeToggle.textContent = isDarkMode ? "🌙" : "☀️";
+  themeToggle.setAttribute("aria-pressed", String(isDarkMode));
+  salvarTema(isDarkMode);
+}
+
+const temaSalvo = lerTemaSalvo();
+const temaInicial = temaSalvo === "dark";
+aplicarTema(temaInicial);
+
+window.addEventListener("scroll", atualizarHeaderPorScroll);
+window.addEventListener("resize", atualizarHeaderPorScroll);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const isDarkMode = !body.classList.contains("dark-mode");
+    aplicarTema(isDarkMode);
+  });
+}
+
+document.querySelectorAll(".nav-menu a").forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const destino = document.querySelector(this.getAttribute("href"));
+
+    if (destino) {
+      destino.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+});
+
+atualizarHeaderPorScroll();
